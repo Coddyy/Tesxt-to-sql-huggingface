@@ -1,0 +1,6 @@
+DB_USERNAME = "postgres"
+DB_PASSWORD = "postgres"
+DB_HOST = "localhost"
+DB_PORT = "3306"
+DB_NAME = "dvdrental"
+SCHEMA_NAME = "public"
