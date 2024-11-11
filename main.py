@@ -17,7 +17,7 @@ question = 'Add one customer with fullname Abhra Sarkar'
 prompt = f"""
 ### Task 
 
-Generate a `SELECT` SQL query to answer the following question: `{question}` 
+Generate a SQL query to answer the following question: `{question}` 
 
 The query will run on a database with the following schema: 
 ```
