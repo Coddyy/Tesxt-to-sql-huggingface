@@ -4,22 +4,21 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 tokenizer = AutoTokenizer.from_pretrained("chatdb/natural-sql-7b")
 
 
-now = datetime.datetime.now()
-print("Start Time", now)
+snow = datetime.datetime.now()
+
 model = AutoModelForCausalLM.from_pretrained(
     "chatdb/natural-sql-7b",
     device_map="auto",
     torch_dtype=torch.float16,
 )
 
-question = 'Where Amanda Carter lives?'
+question = 'Add one customer with fullname Abhra Sarkar'
 
 prompt = f"""
 ### Task 
 
-Generate a SQL query to answer the following question: `{question}` 
+Generate a `SELECT` SQL query to answer the following question: `{question}` 
 
-### PostgreSQL Database Schema 
 The query will run on a database with the following schema: 
 ```
 {get_schema()}
@@ -50,5 +49,20 @@ outputs = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
 print(outputs)
 print(outputs[0].split("```sql")[-1])
 
+print("Start Time", snow)
 now = datetime.datetime.now()
 print("End Time", now)
+
+fmt = '%Y-%m-%d %H:%M:%S'
+tstamp1 = snow
+tstamp2 = now
+if tstamp1 > tstamp2:
+    td = tstamp1 - tstamp2
+else:
+    td = tstamp2 - tstamp1
+td_mins = int(round(td.total_seconds() / 60))
+
+print('The difference is approx. %s minutes' % td_mins)
+
+
+
